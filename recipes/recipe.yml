@@ -1,45 +1,31 @@
----
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
-name: template
-# description will be included in the image's metadata
-description: This is my personal OS image.
+# recipes/recipe.yml
+name: FoamyOS
+description: one heap of a cool OS
 
-# the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: latest # You can pin to a specific version of Fedora as well
+image-version: latest
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
-  - type: files
-    files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
-
-  - type: dnf
-    repos:
-      copr:
-        - atim/starship
+  - type: rpm-ostree
     install:
-      packages:
-        - micro
-        - starship
+      - firefox       
+      - neovim        
+      - git           
+      - curl
+      - loupe                 # Modern GNOME Pictures/Image Viewer
+      - nautilus              # GNOME Files manager
+      - gnome-control-center  # GNOME Settings panel
+      - gnome-tweaks          # GNOME Tweaks customization tool
+      - extension-manager     # Extension Manager app
+      - gnome-calculator      # GNOME Calculator
+      - gnome-clocks          # GNOME Clocks
+      - gnome-console         # Modern GNOME terminal console
+      - baobab                # GNOME Disk Usage Analyzer
+      - gnome-disk-utility    # GNOME Disks manager
+      - gnome-font-viewer     # GNOME Fonts application
+      - gnome-logs            # GNOME System Logs reader
+      - gnome-software        # GNOME Software Center app
     remove:
-      packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-
-  - type: default-flatpaks
-    configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
-      - scope: user # Also add Flathub user repo, but no user packages
-
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+      - gnome-tour    
+      - yelp                  # GNOME Help documentation
+   
