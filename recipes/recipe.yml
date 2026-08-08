@@ -5,27 +5,26 @@ description: one heap of a cool OS
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: latest
 
-modules:
+config:
   - type: rpm-ostree
     install:
       - firefox       
       - neovim        
       - git           
       - curl
-      - loupe                 # Modern GNOME Pictures/Image Viewer
-      - nautilus              # GNOME Files manager
-      - gnome-control-center  # GNOME Settings panel
-      - gnome-tweaks          # GNOME Tweaks customization tool
-      - extension-manager     # Extension Manager app
-      - gnome-calculator      # GNOME Calculator
-      - gnome-clocks          # GNOME Clocks
-      - gnome-console         # Modern GNOME terminal console
-      - baobab                # GNOME Disk Usage Analyzer
-      - gnome-disk-utility    # GNOME Disks manager
-      - gnome-font-viewer     # GNOME Fonts application
-      - gnome-logs            # GNOME System Logs reader
-      - gnome-software        # GNOME Software Center app
+      - loupe                 
+      - nautilus              
+      - gnome-control-center  
+      - gnome-tweaks          
+      - extension-manager     
+      - gnome-calculator      
+      - gnome-clocks          
+      - gnome-console         
+      - baobab                
+      - gnome-disk-utility    
+      - gnome-font-viewer     
+      - gnome-logs            
+      - gnome-software        
     remove:
       - gnome-tour    
-      - yelp                  # GNOME Help documentation
-   
+      - yelp                  
